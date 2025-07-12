@@ -37,6 +37,15 @@ npm run lint
 npm run lint:fix
 ```
 
+### Authentication
+
+Two endpoints are available for user management:
+
+```bash
+POST /api/v1/auth/register
+POST /api/v1/auth/login
+```
+
 ### Docker
 
 ```bash
