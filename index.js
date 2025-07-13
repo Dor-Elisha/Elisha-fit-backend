@@ -8,6 +8,7 @@ const path = require('path')
 const xss = require('xss-clean')
 
 const config = require('./config')
+const programService = require('./services/program.service')
 
 const app = express()
 
@@ -26,8 +27,9 @@ app.use('/api/v1', require('./routes/v1'))
 app.use(require('./routes/errors').clientErrorHandler)
 app.use(require('./routes/errors').errorHandler)
 
-mongoose.connect(config.mongoose.connectionString, config.mongoose.options).then(() => {
+mongoose.connect(config.mongoose.connectionString, config.mongoose.options).then(async () => {
   console.log('Connected to MongoDB')
+  await programService.ensureProgramsFieldForAllUsers()
   app.listen(config.port, () =>
     console.log(`App listening on port ${config.port}`)
   )

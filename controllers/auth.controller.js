@@ -29,4 +29,18 @@ const login = async (req, res, next) => {
   }
 }
 
-module.exports = { register, login }
+const getUserInfo = async (req, res, next) => {
+  try {
+    const { id } = req.params
+    const user = await authService.getUserInfo(id)
+    return res.status(httpStatus.OK).json({
+      success: true,
+      status: httpStatus.OK,
+      data: { id: user._id, email: user.email, programs: user.programs }
+    })
+  } catch (err) {
+    return next(err)
+  }
+}
+
+module.exports = { register, login, getUserInfo }

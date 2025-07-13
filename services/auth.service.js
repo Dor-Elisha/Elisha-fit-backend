@@ -27,7 +27,18 @@ const loginUser = async (email, password) => {
   return user
 }
 
+const getUserInfo = async (userId) => {
+  const user = await User.findById(userId)
+  if (!user) {
+    const err = new Error('User not found')
+    err.statusCode = httpStatus.NOT_FOUND
+    throw err
+  }
+  return user
+}
+
 module.exports = {
   registerUser,
-  loginUser
+  loginUser,
+  getUserInfo
 }

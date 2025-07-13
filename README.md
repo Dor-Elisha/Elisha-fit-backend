@@ -46,6 +46,22 @@ POST /api/v1/auth/register
 POST /api/v1/auth/login
 ```
 
+### Additional auth endpoint
+
+```bash
+GET /api/v1/auth/user-info/:id
+```
+
+### Programs
+
+Program related endpoints:
+
+```bash
+GET /api/v1/programs/:userId
+POST /api/v1/programs/:userId
+PUT /api/v1/programs/:userId/:programId
+```
+
 ### Docker
 
 ```bash
