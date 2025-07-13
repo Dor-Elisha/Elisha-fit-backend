@@ -62,6 +62,12 @@ POST /api/v1/programs/:userId
 PUT /api/v1/programs/:userId/:programId
 ```
 
+### User management
+
+```bash
+PUT /api/v1/users/:userId/name
+```
+
 ### Docker
 
 ```bash
